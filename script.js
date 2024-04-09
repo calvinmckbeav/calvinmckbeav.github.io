@@ -5,6 +5,7 @@ window.onload = function() {
 function fetchJOLTSData() {
     fetch('https://api.bls.gov/publicAPI/v2/timeseries/data/JTS000000000000000JOL')
     .then(response => {
+        console.log(response)
         if (!response.ok) {
             throw new Error('Failed to fetch JOLTS data. Status: ' + response.status);
         }
@@ -24,7 +25,6 @@ function fetchJOLTSData() {
         createChart(labels, values);
     })
     .catch(error => {
-        console.log(response)
         console.error('Error fetching JOLTS data:', error);
     });
 }
