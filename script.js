@@ -1,4 +1,4 @@
-window.onload = function() {
+swindow.onload = function() {
     fetchJOLTSData();
 };
 const API_KEY = '312e520ae86546fb86b64e51a4e7e7c8';
@@ -10,8 +10,8 @@ function fetchJOLTSData() {
     .then(response => response.json())
     .then(data => {
         const series = data.Results.series[0];
-        const labels = filteredData.map(item => `${item.year}-${item.period}`);
-        const values = filteredData.map(item => parseInt(item.value));
+        const labels = series.data.map(item => `${item.year}-${item.period}`);
+        const values = series.data.map(item => parseInt(item.value));
 
         createChart(labels, values);
     })
