@@ -5,17 +5,15 @@ body {
 }
 
 .container {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 0 20px;
+    max-width: 75%;
+    margin: 0 auto;
+    padding: 20px;
 }
 
 h1 {
     text-align: center;
 }
 
-#joltsChart {
-    width: 75vw; /* Set the width to 75% of the viewport width */
-    height: auto; /* Allow the height to adjust automatically */
-    margin: 0 auto; /* Center the chart horizontally */
+#chart-container {
+    height: 400px; /* Adjust height as needed */
 }
