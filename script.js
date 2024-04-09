@@ -24,6 +24,7 @@ function fetchJOLTSData() {
         createChart(labels, values);
     })
     .catch(error => {
+        console.log(response)
         console.error('Error fetching JOLTS data:', error);
     });
 }
