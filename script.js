@@ -6,7 +6,7 @@ function fetchJOLTSData() {
     fetch('https://api.bls.gov/publicAPI/v2/timeseries/data/JTS000000000000000JOL')
     .then(response => {
         if (!response.ok) {
-            throw new Error('Failed to fetch JOLTS data');
+            throw new Error('Failed to fetch JOLTS data. Status: ' + response.status);
         }
         return response.json();
     })
