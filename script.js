@@ -1,53 +1,68 @@
-window.onload = function() {
-    fetchJOLTSData();
-};
-
-function fetchJOLTSData() {
-    fetch('https://api.bls.gov/publicAPI/v2/timeseries/data/JTS000000000000000JOL')
-    .then(response => {
-        console.log(response)
-        if (!response.ok) {
-            throw new Error('Failed to fetch JOLTS data. Status: ' + response.status);
-        }
-        return response.json();
-    })
-    .then(data => {
-        console.log('Data from API:', data); // Log the data returned by the API for inspection
-
-        if (!data || !data.Results || !data.Results.series || data.Results.series.length === 0 || !data.Results.series[0].data || data.Results.series[0].data.length === 0) {
-            throw new Error('Invalid JOLTS data format');
-        }
-
-        const series = data.Results.series[0];
-        const labels = series.data.map(item => `${item.year}-${item.period}`);
-        const values = series.data.map(item => parseInt(item.value));
-
-        createChart(labels, values);
-    })
-    .catch(error => {
-        console.error('Error fetching JOLTS data:', error);
-    });
+// Function to fetch JOLTS data from API
+async function fetchJOLTSData() {
+    const response = await fetch('https://api.bls.gov/publicAPI/v2/timeseries/data/JTU00000000',
+        {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                'registrationkey': 'YOUR_BLS_API_KEY',
+                'seriesid': ['JTU00000000']
+            })
+        });
+    const data = await response.json();
+    return data;
 }
-function createChart(labels, values) {
-    const ctx = document.getElementById('joltsChart').getContext('2d');
+
+// Function to parse JOLTS data and prepare it for chart
+function parseData(data) {
+    const series = data.Results.series[0];
+    const dates = series.data.map(entry => entry.period);
+    const values = series.data.map(entry => parseInt(entry.value));
+
+    return { dates, values };
+}
+
+// Function to create and render the chart
+function renderChart(dates, values) {
+    const ctx = document.getElementById('chart-container').getContext('2d');
     const chart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: labels.reverse(), // Reverse labels to show from oldest to newest
+            labels: dates,
             datasets: [{
                 label: 'Job Openings',
-                data: values.reverse(), // Reverse values to match labels order
+                data: values,
                 backgroundColor: 'rgba(54, 162, 235, 0.2)',
                 borderColor: 'rgba(54, 162, 235, 1)',
                 borderWidth: 1
             }]
         },
         options: {
+            responsive: true,
+            maintainAspectRatio: false,
             scales: {
-                y: {
-                    beginAtZero: true
-                }
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
             }
         }
     });
 }
+
+// Main function to fetch data, parse it, and render chart
+async function main() {
+    try {
+        const rawData = await fetchJOLTSData();
+        const { dates, values } = parseData(rawData);
+        renderChart(dates, values);
+    } catch (error) {
+        console.error('Error fetching or parsing data:', error);
+    }
+}
+
+// Call main function to start the process
+main();
