@@ -1,4 +1,4 @@
-swindow.onload = function() {
+window.onload = function() {
     fetchJOLTSData();
 };
 const API_KEY = '312e520ae86546fb86b64e51a4e7e7c8';
