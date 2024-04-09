@@ -6,6 +6,7 @@ function fetchJOLTSData() {
     fetch('https://api.bls.gov/publicAPI/v2/timeseries/data/JTS000000000000000JOL')
     .then(response => response.json())
     .then(data => {
+        console.log(data)
         const series = data.Results.series[0];
         const labels = series.data.map(item => `${item.year}-${item.period}`);
         const values = series.data.map(item => parseInt(item.value));
