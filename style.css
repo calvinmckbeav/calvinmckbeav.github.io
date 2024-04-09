@@ -14,7 +14,7 @@ h1 {
     text-align: center;
 }
 
-#data-container {
+#joltsChart {
     width: 75vw; /* Set the width to 75% of the viewport width */
     height: auto; /* Allow the height to adjust automatically */
     margin: 0 auto; /* Center the chart horizontally */
