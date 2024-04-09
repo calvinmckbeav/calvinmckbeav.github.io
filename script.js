@@ -3,8 +3,11 @@ window.onload = function() {
 };
 
 function fetchJOLTSData() {
-    console.log('test 123')
-    fetch('https://api.bls.gov/publicAPI/v2/timeseries/data/JTS000000000000000JOL')
+    fetch('https://api.bls.gov/publicAPI/v2/timeseries/data/JTS000000000000000JOL', 
+          {credentials: 'include',
+           method: 'GET',
+           mode: 'cors'
+          })
     .then(response => response.json())
     .then(data => {
         console.log(data)
