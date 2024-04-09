@@ -6,9 +6,8 @@ const API_KEY = '312e520ae86546fb86b64e51a4e7e7c8';
 function fetchJOLTSData() {
     const url = `https://api.bls.gov/publicAPI/v2/timeseries/data/JTS000000000000000JOL?registrationkey=${API_KEY}`;
     fetch(url,
-           method: 'GET',
-           mode: 'cors'
-          })
+          {method: 'GET',
+           mode: 'cors'})
     .then(response => response.json())
     .then(data => {
         console.log(data)
