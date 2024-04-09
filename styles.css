@@ -5,15 +5,15 @@ body {
 }
 
 .container {
-    max-width: 75%;
-    margin: 0 auto;
-    padding: 20px;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 0 20px;
 }
 
 h1 {
     text-align: center;
 }
 
-#chart-container {
-    height: 400px; /* Adjust height as needed */
+#data-container {
+    margin-top: 20px;
 }
