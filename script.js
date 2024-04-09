@@ -11,6 +11,8 @@ function fetchJOLTSData() {
         return response.json();
     })
     .then(data => {
+        console.log('Data from API:', data); // Log the data returned by the API for inspection
+
         if (!data || !data.Results || !data.Results.series || data.Results.series.length === 0 || !data.Results.series[0].data || data.Results.series[0].data.length === 0) {
             throw new Error('Invalid JOLTS data format');
         }
