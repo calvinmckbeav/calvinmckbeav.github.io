@@ -4,7 +4,7 @@ window.onload = function() {
 const API_KEY = '312e520ae86546fb86b64e51a4e7e7c8';
 
 function fetchJOLTSData() {
-    const url = `https://api.bls.gov/publicAPI/v2/timeseries/data/JTS000000000000000JOL?registrationkey=${API_KEY}`;
+    const url = `https://api.bls.gov/publicAPI/v2/timeseries/data/LAUCN040010000000005?latest=true&registrationkey=${API_KEY}`;
     fetch(url)
     .then(response => response.json())
     .then(data => {
