@@ -3,6 +3,7 @@ window.onload = function() {
 };
 
 function fetchJOLTSData() {
+    console.log('test 123')
     fetch('https://api.bls.gov/publicAPI/v2/timeseries/data/JTS000000000000000JOL')
     .then(response => response.json())
     .then(data => {
