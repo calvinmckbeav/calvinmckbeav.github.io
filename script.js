@@ -12,7 +12,7 @@ function fetchJOLTSData() {
         const series = data.Results.series[0];
         let filteredData = series.data.filter(item => parseInt(item.year) >= 2013 && item.period === 'M01');
         const labels = filteredData.map(item => `${item.year}`);
-        const values = filteredData.map(item => parseInt(item.value));
+        const values = series.data.map(item => parseInt(item.value));
 
         createChart(labels, values);
     })
