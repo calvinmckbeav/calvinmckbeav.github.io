@@ -44,14 +44,14 @@ function createChart(labels, values) {
             plugins: {
                 title: {
                     display: true,
-                    text: 'Monthly Job Openings',
+                    text: 'Job Openings Over Time',
                     font: {
                         size: 18
                     }
                 },
                 subtitle: {
                     display: true,
-                    text: 'Data represented in thousands',
+                    text: 'Monthly data with x-axis labels for January of each year',
                     font: {
                         size: 14
                     }
@@ -68,11 +68,11 @@ function createChart(labels, values) {
                 y: {
                     beginAtZero: true
                 },
-                x: {
+                yAxes: [{
                     grid: {
                         display: false // Remove horizontal grid lines
                     }
-                }
+                }]
             }
         }
     });
