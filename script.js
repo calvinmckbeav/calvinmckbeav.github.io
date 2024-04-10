@@ -1,6 +1,7 @@
 window.onload = function() {
     fetchJOLTSData();
 };
+
 const API_KEY = '312e520ae86546fb86b64e51a4e7e7c8';
 
 function fetchJOLTSData() {
@@ -33,6 +34,7 @@ function createChart(labels, values) {
         data: {
             labels: labels,
             datasets: [{
+                label: 'Job Openings',
                 data: values,
                 backgroundColor: 'rgba(54, 162, 235, 0.2)',
                 borderColor: 'rgba(54, 162, 235, 1)',
@@ -55,24 +57,17 @@ function createChart(labels, values) {
                     font: {
                         size: 14
                     }
-                },
-                footer: {
-                    display: true,
-                    text: 'Source: Bureau of Labor Statistics',
-                    font: {
-                        size: 12
-                    }
                 }
             },
             scales: {
                 y: {
                     beginAtZero: true
                 },
-                yAxes: [{
+                x: {
                     grid: {
                         display: false // Remove horizontal grid lines
                     }
-                }]
+                }
             }
         }
     });
