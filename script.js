@@ -15,7 +15,7 @@ function fetchJOLTSData() {
             if (item.period === 'M01') {
                 return `${item.year}`;
             } else {
-                return ;
+                return '';
             }
         });
         const values = series.data.map(item => parseInt(item.value));
