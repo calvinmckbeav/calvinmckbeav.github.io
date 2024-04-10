@@ -31,10 +31,10 @@ function createChart(labels, values) {
     const chart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: labels.reverse(), // Reverse labels to show from oldest to newest
+            labels: labels,
             datasets: [{
                 label: 'Job Openings',
-                data: values.reverse(), // Reverse values to match labels order
+                data: values,
                 backgroundColor: 'rgba(54, 162, 235, 0.2)',
                 borderColor: 'rgba(54, 162, 235, 1)',
                 borderWidth: 1,
@@ -42,9 +42,37 @@ function createChart(labels, values) {
             }]
         },
         options: {
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Monthly Job Openings',
+                    font: {
+                        size: 18
+                    }
+                },
+                subtitle: {
+                    display: true,
+                    text: 'Data represented in thousands',
+                    font: {
+                        size: 14
+                    }
+                },
+                footer: {
+                    display: true,
+                    text: 'Source: Bureau of Labor Statistics',
+                    font: {
+                        size: 12
+                    }
+                }
+            },
             scales: {
                 y: {
                     beginAtZero: true
+                },
+                x: {
+                    grid: {
+                        display: false // Remove horizontal grid lines
+                    }
                 }
             }
         }
