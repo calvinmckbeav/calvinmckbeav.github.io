@@ -19,6 +19,7 @@ function fetchJOLTSData() {
             }
         });
         const values = series.data.map(item => parseInt(item.value));
+        console.log(labels);
 
         createChart(labels, values);
     })
