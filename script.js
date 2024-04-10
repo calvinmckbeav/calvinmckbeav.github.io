@@ -33,8 +33,7 @@ function createChart(labels, values) {
                 backgroundColor: 'rgba(54, 162, 235, 0.2)',
                 borderColor: 'rgba(54, 162, 235, 1)',
                 borderWidth: 1,
-                pointRadius: 0, // Remove the dots
-                tension: 0.4 // Adjust tension for smoothness
+                pointRadius: 0 // Remove the dots
             }]
         },
         options: {
