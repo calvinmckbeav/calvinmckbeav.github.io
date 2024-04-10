@@ -4,14 +4,15 @@ window.onload = function() {
 const API_KEY = '312e520ae86546fb86b64e51a4e7e7c8';
 
 function fetchJOLTSData() {
-    const url = `https://api.bls.gov/publicAPI/v2/timeseries/data/JTU000000000000000JOL?registrationkey=${API_KEY}&startyear=2013&endyear=2030`;
+    const url = `https://api.bls.gov/publicAPI/v2/timeseries/data/JTU000000000000000JOL?registrationkey=${API_KEY}&startyear=2018&endyear=2030`;
 
     fetch(url)
     .then(response => response.json())
     .then(data => {
         const series = data.Results.series[0];
-        const labels = series.data.map(item => `${item.year}-${item.period}`);
-        const values = series.data.map(item => parseInt(item.value));
+        let filteredData = series.data.filter(item => parseInt(item.year) >= 2013 && item.period === 'M01');
+        const labels = filteredData.map(item => `${item.year}`);
+        const values = series.map(item => parseInt(item.value));
 
         createChart(labels, values);
     })
