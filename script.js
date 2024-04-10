@@ -84,7 +84,7 @@ function createChart(labels, values) {
                         drawOnChartArea: false
                     }
                 },
-                xAxes: {
+                xAxes: 
                       {
                         scaleLabel: {
                           display: true,
@@ -93,7 +93,7 @@ function createChart(labels, values) {
                           fontSize: 11
                         }
                       }
-            }
+            
             }
         }
     });
