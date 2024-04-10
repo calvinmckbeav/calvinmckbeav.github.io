@@ -29,6 +29,10 @@ function fetchJOLTSData() {
 }
 
 function createChart(labels, values) {
+    // Reverse the labels and values arrays
+    labels.reverse();
+    values.reverse();
+    
     const ctx = document.getElementById('joltsChart').getContext('2d');
     const chart = new Chart(ctx, {
         type: 'line',
