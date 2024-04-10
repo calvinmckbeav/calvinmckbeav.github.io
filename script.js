@@ -43,30 +43,9 @@ function createChart(labels, values) {
             }]
         },
         options: {
-            plugins: {
-                title: {
-                    display: true,
-                    text: 'Job Openings Over Time',
-                    font: {
-                        size: 18
-                    }
-                },
-                subtitle: {
-                    display: true,
-                    text: 'Monthly data with x-axis labels for January of each year',
-                    font: {
-                        size: 14
-                    }
-                }
-            },
             scales: {
                 y: {
                     beginAtZero: true
-                },
-                x: {
-                    grid: {
-                        display: true
-                    }
                 }
             }
         }
