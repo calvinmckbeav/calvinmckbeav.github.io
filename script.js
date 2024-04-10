@@ -76,7 +76,10 @@ function createChart(labels, values) {
                     display: true // Ensure x-axis labels are displayed
                 },
                 y: {
-                    beginAtZero: true
+                    beginAtZero: true,
+                    grid: {
+                        drawOnChartArea: false
+                    }
                 }
             }
         }
