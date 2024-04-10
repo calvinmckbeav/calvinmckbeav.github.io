@@ -87,7 +87,7 @@ function createChart(labels, values) {
                 xAxes: 
                       {
                         scaleLabel: {
-                          display: true,
+                          display: false,
                           labelString: 'Source: Bureau of Labor Statistics',
                           fontColor: '#C7C7CC',
                           fontSize: 11
