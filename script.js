@@ -53,7 +53,7 @@ function createChart(labels, values) {
                     display: true,
                     text: 'Monthly Job Openings',
                     font: {
-                        size: 18
+                        size: 25
                     }
                 },
                 subtitle: {
@@ -83,7 +83,17 @@ function createChart(labels, values) {
                     grid: {
                         drawOnChartArea: false
                     }
-                }
+                },
+                xAxes: [
+                      {
+                        scaleLabel: {
+                          display: true,
+                          labelString: 'Source: Bureau of Labor Statistics',
+                          fontColor: '#C7C7CC',
+                          fontSize: 11
+                        }
+                      }
+                    ]
             }
         }
     });
