@@ -43,7 +43,33 @@ function createChart(labels, values) {
             }]
         },
         options: {
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Job Openings Over Time',
+                    font: {
+                        size: 18
+                    }
+                },
+                subtitle: {
+                    display: true,
+                    text: 'Monthly data with x-axis labels for January of each year',
+                    font: {
+                        size: 14
+                    }
+                },
+                footer: {
+                    display: true,
+                    text: 'Source: Bureau of Labor Statistics',
+                    font: {
+                        size: 12
+                    }
+                }
+            },
             scales: {
+                x: {
+                    display: true // Ensure x-axis labels are displayed
+                },
                 y: {
                     beginAtZero: true
                 }
