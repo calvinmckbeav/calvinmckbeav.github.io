@@ -10,9 +10,14 @@ function fetchJOLTSData() {
     .then(response => response.json())
     .then(data => {
         const series = data.Results.series[0];
-        let filteredData = series.data.filter(item => parseInt(item.year) >= 2013 && item.period === 'M01');
-        const labels = filteredData.map(item => `${item.year}`);
-        const values = filteredData.map(item => parseInt(item.value));
+        const labels = series.data.map(item => {
+            if (item.period === 'M01') {
+                return `${item.year}`;
+            } else {
+                return '';
+            }
+        });
+        const values = series.data.map(item => parseInt(item.value));
 
         createChart(labels, values);
     })
