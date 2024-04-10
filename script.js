@@ -33,7 +33,6 @@ function createChart(labels, values) {
         data: {
             labels: labels,
             datasets: [{
-                label: 'Job Openings',
                 data: values,
                 backgroundColor: 'rgba(54, 162, 235, 0.2)',
                 borderColor: 'rgba(54, 162, 235, 1)',
