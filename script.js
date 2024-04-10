@@ -39,7 +39,7 @@ function createChart(labels, values) {
         data: {
             labels: labels,
             datasets: [{
-                label: 'Job Openings',
+                label: '',
                 data: values,
                 backgroundColor: 'rgba(54, 162, 235, 0.2)',
                 borderColor: 'rgba(54, 162, 235, 1)',
@@ -51,14 +51,14 @@ function createChart(labels, values) {
             plugins: {
                 title: {
                     display: true,
-                    text: 'Job Openings Over Time',
+                    text: 'Monthly Job Openings',
                     font: {
                         size: 18
                     }
                 },
                 subtitle: {
                     display: true,
-                    text: 'Monthly data with x-axis labels for January of each year',
+                    text: 'Represented in thousands',
                     font: {
                         size: 14
                     }
@@ -69,6 +69,9 @@ function createChart(labels, values) {
                     font: {
                         size: 12
                     }
+                },
+                legend: {
+                    display: false
                 }
             },
             scales: {
