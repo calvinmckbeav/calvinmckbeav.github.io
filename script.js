@@ -65,7 +65,7 @@ function createChart(labels, values) {
                 },
                 x: {
                     grid: {
-                        display: false // Remove horizontal grid lines
+                        display: true
                     }
                 }
             }
