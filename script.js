@@ -2,10 +2,10 @@ window.onload = function() {
     fetchJOLTSData();
 };
 
-const API_KEY = 'YOUR_API_KEY'; // Replace 'YOUR_API_KEY' with your actual API key
+const API_KEY = '312e520ae86546fb86b64e51a4e7e7c8';
 
 function fetchJOLTSData() {
-    const url = https://api.bls.gov/publicAPI/v2/timeseries/data/JTU000000000000000JOL?registrationkey=${API_KEY}`;
+    const url = 'https://api.bls.gov/publicAPI/v2/timeseries/data/JTU000000000000000JOL?registrationkey=${API_KEY}`;
 
     fetch(url)
     .then(response => response.json())
