@@ -62,11 +62,6 @@ function createChart(labels, values) {
             scales: {
                 y: {
                     beginAtZero: true
-                },
-                x: {
-                    grid: {
-                        display: false // Remove horizontal grid lines
-                    }
                 }
             }
         }
