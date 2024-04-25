@@ -21,4 +21,5 @@ h1 {
 #qalChart {
     width: 80%; /* Adjust the width as needed */
     margin: 0 auto; /* Center the charts horizontally */
+    margin-bottom: 50px;
 }
