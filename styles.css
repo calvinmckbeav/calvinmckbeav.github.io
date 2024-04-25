@@ -5,6 +5,7 @@ body {
 }
 
 .container {
+    width: 75%;
     max-width: 800px;
     margin: 20px auto;
     padding: 0 20px;
@@ -14,6 +15,10 @@ h1 {
     text-align: center;
 }
 
-#data-container {
-    margin-top: 20px;
+
+
+#mjoChart,
+#qalChart {
+    width: 80%; /* Adjust the width as needed */
+    margin: 0 auto; /* Center the charts horizontally */
 }
