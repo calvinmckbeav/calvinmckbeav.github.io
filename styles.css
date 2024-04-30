@@ -18,7 +18,8 @@ h1 {
 
 
 #mjoChart,
-#qalChart {
+#qalChart,
+#empChart {
     width: 80%; /* Adjust the width as needed */
     margin: 0 auto; /* Center the charts horizontally */
     margin-bottom: 50px;
