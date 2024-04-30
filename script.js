@@ -302,7 +302,7 @@ function createEChart(labels, values, month) {
     };
 
 
-    const ctx = document.getElementById('joltsChart').getContext('2d');
+    const ctx = document.getElementById('empChart').getContext('2d');
     const chart = new Chart(ctx, {
       type: 'bar',
       data: data,
