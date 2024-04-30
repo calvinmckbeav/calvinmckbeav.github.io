@@ -147,7 +147,6 @@ function fetchJOLTSData(title) {
     Promise.all(fetchPromises)
       .then(() => {
         // create chart
-        industry_data['Manufacturing'] = -8
         const labels = Object.keys(industry_data);
         const values = Object.values(industry_data);
         
@@ -339,7 +338,7 @@ function createEChart(labels, values, month) {
             }
           },
           legend: {
-            display: true
+            display: false
           }
         },
         scales: {
