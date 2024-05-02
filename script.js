@@ -146,9 +146,12 @@ function fetchJOLTSData(title) {
     // Wait for all fetch requests to complete
     Promise.all(fetchPromises)
       .then(() => {
-        // create chart
-        const labels = Object.keys(industry_data);
-        const values = Object.values(industry_data);
+        // Sort industry_data by value in descending order
+        const sortedData = Object.entries(industry_data).sort((a, b) => b[1] - a[1]);
+        
+        // Extract sorted labels and values
+        const labels = sortedData.map(entry => entry[0]);
+        const values = sortedData.map(entry => entry[1]);
         
         console.log(industry_data)
         createEChart(labels, values, month);
