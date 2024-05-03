@@ -19,7 +19,8 @@ h2 {
 
 #mjoChart,
 #qalChart,
-#empChart {
+#empChart, 
+#heChart {
     width: 80%; /* Adjust the width as needed */
     height: 322px;
     margin: 0 auto; /* Center the charts horizontally */
