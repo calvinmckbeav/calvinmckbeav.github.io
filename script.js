@@ -2,6 +2,7 @@ window.onload = function() {
     fetchJOLTSData("Monthly Job Openings");
     fetchJOLTSData("Quits and Layoffs Over Time");
     fetchJOLTSData("Monthly Change in Employment");
+    fetchJOLTSData("Hourly Earnings");
 };
 
 const API_KEY = '312e520ae86546fb86b64e51a4e7e7c8';
@@ -156,6 +157,33 @@ function fetchJOLTSData(title) {
         console.log(industry_data)
         createEChart(labels, values, month);
       });
+  } else if (title == "Hourly Earnings") {
+      // Earnings data pull
+    const url1 = `https://api.bls.gov/publicAPI/v2/timeseries/data/	CES0500000003?registrationkey=${API_KEY}&startyear=2018&endyear=2030`;
+
+    fetch(url1)
+    .then(response => response.json())
+    .then(data => {
+      // Object for each month
+      earningsArr = data.Results.series[0].data.slice(0, 12);
+
+      // labels
+      labels = earningsArr.map(item => item.periodName.slice(0, 3) + ' ' + item.year)
+      // hourly earnings values
+      earningsValues = earningsArr.map(item => parseFloat(item.value))
+      // YoY change
+      yoyChange = []
+      for (let i = 0; i < 12; i++) {
+        yoyChange.push(100 * (parseFloat(data.Results.series[0].data[i].value) / parseFloat(data.Results.series[0].data[i+12].value) - 1));
+      }
+      console.log(labels)
+      console.log(earningsValues)
+      console.log(yoyChange)
+      createHourlyChart(labels, earningsValues, yoyChange);
+    })
+    .catch(error => {
+        console.error('Error fetching BLS Data', error);
+    });
   }
 }
 
@@ -357,5 +385,105 @@ function createEChart(labels, values, month) {
           }
         }
       }
+    });
+}
+
+
+function createHourlyChart(labels, values1, values2) {
+    // Reverse the labels and values arrays
+    labels.reverse();
+    values1.reverse();
+    values2.reverse();
+
+    
+
+    const ctx = document.getElementById('joltsChart').getContext('2d');
+    const chart = new Chart(ctx, {
+        type: 'bar', // Set the default type to 'bar'
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Hourly Earnings (left)',
+                data: values1,
+                yAxisID: 'earningsAxis', // Assigning this dataset to the 'earningsAxis'
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 2,
+                pointRadius: 0 // Remove the dots
+            },
+            {
+                label: 'YoY Change (right)',
+                data: values2,
+                yAxisID: 'yoyAxis', // Assigning this dataset to the 'yoyAxis'
+                type: 'line', // Specify 'line' type for values2 dataset
+                borderColor: 'rgba(255, 99, 132, 1)',
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderWidth: 2,
+                pointRadius: 0 // Remove the dots
+            }]
+        },
+        options: {
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Hourly Earnings for all Private Industries',
+                    font: {
+                        size: 25
+                    }
+                },
+                subtitle: {
+                    display: true,
+                    text: 'In USD and Seasonally Adjusted',
+                    font: {
+                        size: 14
+                    }
+                },
+                footer: {
+                    display: true,
+                    text: 'Source: Bureau of Labor Statistics',
+                    font: {
+                        size: 12
+                    }
+                },
+                legend: {
+                    display: true
+                }
+            },
+            scales: {
+                x: {
+                    display: true // Ensure x-axis labels are displayed
+                },
+                earningsAxis: { // Customizing the 'earningsAxis'
+                    beginAtZero: false,
+                    type: 'linear', // 'linear' for numerical values, 'category' for strings
+                    position: 'left', // Positioning the axis on the left
+                    grid: {
+                        drawOnChartArea: false
+                    },
+                    ticks: {
+                        stepSize: 1,
+                        // Customizing tick marks
+                        callback: function(value, index, values) {
+                            return '$' + value; // Add '$' before each tick
+                        }
+                    }
+                },
+                yoyAxis: { // Customizing the 'yoyAxis'
+                    beginAtZero: false, 
+                    type: 'linear',
+                    position: 'right', // Positioning the axis on the right
+                    grid: {
+                        drawOnChartArea: false
+                    },
+                    ticks: {
+                      stepSize: 0.25,
+                        // Customizing tick marks
+                      callback: function(value, index, values) {
+                            return value + '%'; // Add '%' after each tick
+                        }
+                    }
+                }
+            }
+        }
     });
 }
