@@ -397,7 +397,7 @@ function createHourlyChart(labels, values1, values2) {
 
     
 
-    const ctx = document.getElementById('joltsChart').getContext('2d');
+    const ctx = document.getElementById('heChart').getContext('2d');
     const chart = new Chart(ctx, {
         type: 'bar', // Set the default type to 'bar'
         data: {
