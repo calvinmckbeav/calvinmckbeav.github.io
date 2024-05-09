@@ -13,18 +13,18 @@ function createQALChart(labels, values1, values2) {
             datasets: [{
                 label: 'Quits',
                 data: values1,
-                backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                borderColor: 'rgba(54, 162, 235, 1)',
-                borderWidth: 2,
-                pointRadius: 0 // Remove the dots
+                backgroundColor: '#CA61FF',
+                borderColor: '#CA61FF',
+                borderWidth: 3,
+                pointRadius: 1 // Remove the dots
             },
                       {
                 label: 'Layoffs',
                 data: values2,
-                borderColor: 'rgba(255, 99, 132, 1)',
-                backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                borderWidth: 2,
-                pointRadius: 0 // Remove the dots
+                borderColor: '#FF781F',
+                backgroundColor: '#FF781F',
+                borderWidth: 3,
+                pointRadius: 1 // Remove the dots
             }]
         },
         options: {
@@ -34,24 +34,28 @@ function createQALChart(labels, values1, values2) {
                     text: 'Quits and Layoffs Over Time',
                     font: {
                         size: 25
-                    }
+                    },
+                    color: '#FF2F59'
                 },
                 subtitle: {
                     display: true,
                     text: 'Represented in thousands',
                     font: {
                         size: 14
-                    }
+                    },
+                    color: '#676767'
                 },
                 footer: {
                     display: true,
                     text: 'Source: Bureau of Labor Statistics',
                     font: {
                         size: 12
-                    }
+                    },
+                    color: '#454545'
                 },
                 legend: {
-                    display: true
+                    display: true,
+                    color: '#454545'
                 }
             },
             scales: {
