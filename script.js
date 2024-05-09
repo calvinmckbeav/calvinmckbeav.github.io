@@ -5,7 +5,27 @@ window.onload = function() {
     fetchJOLTSData("Hourly Earnings");
 };
 
-const API_KEY = '312e520ae86546fb86b64e51a4e7e7c8';
+// const API_KEY = '312e520ae86546fb86b64e51a4e7e7c8';
+const API_KEY = '22d13e6633eb41729d1621c4b2453a77';
+// const API_KEY = 'f43e483f132f4bcda8c91946e7cc2fee';
+// const API_KEY = 'b5743abeddb54ab58c45608fff0bb69e';
+
+const month_dictionary = {
+      1: 'January',
+      2: 'February',
+      3: 'March',
+      4: 'April',
+      5: 'May',
+      6: 'June',
+      7: 'July',
+      8: 'August',
+      9: 'September',
+      10: 'October',
+      11: 'November',
+      12: 'December'
+    };
+
+var month;
 
 function fetchJOLTSData(title) {
     if (title == "Monthly Job Openings") {
@@ -24,14 +44,16 @@ function fetchJOLTSData(title) {
           });
           const values = series.data.map(item => parseInt(item.value));
           console.log(labels);
+          month = month_dictionary[data.Results.series[0].data.length % 12];
 
           createMJOChart(labels, values);
+          writeParagraph(title, month, values)
       })
       .catch(error => {
           console.error('Error fetching JOLTS data:', error);
       });
     }
-      
+
   else if (title == "Quits and Layoffs Over Time") {
     // Quits data pull
     const url1 = `https://api.bls.gov/publicAPI/v2/timeseries/data/JTS000000000000000QUL?registrationkey=${API_KEY}&startyear=2018&endyear=2030`;
@@ -49,6 +71,7 @@ function fetchJOLTSData(title) {
         });
         const qvalues = quits.data.map(item => parseInt(item.value));
         console.log(labels);
+        month = month_dictionary[data.Results.series[0].data.length % 12];
 
         // Layoffs Data Pull
         const url2 = `https://api.bls.gov/publicAPI/v2/timeseries/data/JTS000000000000000LDL?registrationkey=${API_KEY}&startyear=2018&endyear=2030`;
@@ -100,23 +123,6 @@ function fetchJOLTSData(title) {
         'Trade, transportation, and utilities' : null
     };
 
-    const month_dictionary = {
-      1: 'January',
-      2: 'February',
-      3: 'March',
-      4: 'April',
-      5: 'May',
-      6: 'June',
-      7: 'July',
-      8: 'August',
-      9: 'September',
-      10: 'October',
-      11: 'November',
-      12: 'December'
-    };
-
-    var month;
-
     // Array to store all fetch promises
     var fetchPromises = [];
 
@@ -149,11 +155,11 @@ function fetchJOLTSData(title) {
       .then(() => {
         // Sort industry_data by value in descending order
         const sortedData = Object.entries(industry_data).sort((a, b) => b[1] - a[1]);
-        
+
         // Extract sorted labels and values
         const labels = sortedData.map(entry => entry[0]);
         const values = sortedData.map(entry => entry[1]);
-        
+
         console.log(industry_data)
         createEChart(labels, values, month);
       });
@@ -166,6 +172,7 @@ function fetchJOLTSData(title) {
     .then(data => {
       // Object for each month
       earningsArr = data.Results.series[0].data.slice(0, 12);
+        month = month_dictionary[data.Results.series[0].data.length % 12];
 
       // labels
       labels = earningsArr.map(item => item.periodName.slice(0, 3) + ' ' + item.year)
