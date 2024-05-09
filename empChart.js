@@ -4,9 +4,10 @@ function createEChart(labels, values, month) {
       datasets: [{
         label: 'Change in Employment',
         data: values,
-        backgroundColor: 'rgba(54, 162, 235, 0.2)',
-        borderColor: 'rgba(54, 162, 235, 1)',
-        borderWidth: 1
+        borderColor: '#CA61FF',
+        backgroundColor: '#CA61FF',
+        borderWidth: 3,
+        pointRadius: 1 // Remove the dots
       }]
     };
 
@@ -31,21 +32,24 @@ function createEChart(labels, values, month) {
             text: 'Change in Employment in ' + month,
             font: {
               size: 25
-            }
+            },
+            color: '#FF2F59'
           },
           subtitle: {
             display: true,
             text: 'Represented in thousands',
             font: {
               size: 14
-            }
+            },
+            color: '#676767'
           },
           footer: {
             display: true,
             text: 'Source: Bureau of Labor Statistics',
             font: {
               size: 12
-            }
+            },
+            color: '#454545'
           },
           legend: {
             display: false
@@ -63,6 +67,9 @@ function createEChart(labels, values, month) {
             }
           }
         }
+      }
+    });
+}
       }
     });
 }
