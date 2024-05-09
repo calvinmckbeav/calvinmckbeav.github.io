@@ -4,31 +4,32 @@ function createHourlyChart(labels, values1, values2) {
     values1.reverse();
     values2.reverse();
 
-    
+
 
     const ctx = document.getElementById('heChart').getContext('2d');
     const chart = new Chart(ctx, {
         type: 'bar', // Set the default type to 'bar'
         data: {
             labels: labels,
-            datasets: [{
+            datasets: [
+                {
+                    label: 'YoY Change (right)',
+                    data: values2,
+                    yAxisID: 'yoyAxis', // Assigning this dataset to the 'yoyAxis'
+                    type: 'line', // Specify 'line' type for values2 dataset
+                    borderColor: '#FF781F',
+                    backgroundColor: '#FF781F',
+                    borderWidth: 3,
+                    pointRadius: 1 // Remove the dots
+                },
+                {
                 label: 'Hourly Earnings (left)',
                 data: values1,
                 yAxisID: 'earningsAxis', // Assigning this dataset to the 'earningsAxis'
-                backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                borderColor: 'rgba(54, 162, 235, 1)',
-                borderWidth: 2,
-                pointRadius: 0 // Remove the dots
-            },
-            {
-                label: 'YoY Change (right)',
-                data: values2,
-                yAxisID: 'yoyAxis', // Assigning this dataset to the 'yoyAxis'
-                type: 'line', // Specify 'line' type for values2 dataset
-                borderColor: 'rgba(255, 99, 132, 1)',
-                backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                borderWidth: 2,
-                pointRadius: 0 // Remove the dots
+                backgroundColor: '#CA61FF',
+                borderColor: '#CA61FF',
+                borderWidth: 3,
+                pointRadius: 1 // Remove the dots
             }]
         },
         options: {
@@ -38,24 +39,28 @@ function createHourlyChart(labels, values1, values2) {
                     text: 'Hourly Earnings for all Private Industries',
                     font: {
                         size: 25
-                    }
+                    },
+                    color: '#FF2F59'
                 },
                 subtitle: {
                     display: true,
                     text: 'In USD and Seasonally Adjusted',
                     font: {
                         size: 14
-                    }
+                    },
+                    color: '#676767'
                 },
                 footer: {
                     display: true,
                     text: 'Source: Bureau of Labor Statistics',
                     font: {
                         size: 12
-                    }
+                    },
+                    color: '#454545'
                 },
                 legend: {
-                    display: true
+                    display: true,
+                    color: '#454545'
                 }
             },
             scales: {
