@@ -12,9 +12,9 @@ function createMJOChart(labels, values) {
                 label: '',
                 data: values,
                 backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                borderColor: 'rgba(54, 162, 235, 1)',
-                borderWidth: 2,
-                pointRadius: 0 // Remove the dots
+                borderColor: '#CA61FF',
+                borderWidth: 3,
+                pointRadius: 1 // Remove the dots
             }]
         },
         options: {
@@ -24,21 +24,24 @@ function createMJOChart(labels, values) {
                     text: 'Monthly Job Openings',
                     font: {
                         size: 25
-                    }
+                    },
+                    color: '#FF2F59'
                 },
                 subtitle: {
                     display: true,
                     text: 'Represented in thousands',
                     font: {
                         size: 14
-                    }
+                    },
+                    color: '#676767'
                 },
                 footer: {
                     display: true,
                     text: 'Source: Bureau of Labor Statistics',
                     font: {
                         size: 12
-                    }
+                    },
+                    color: '#454545'
                 },
                 legend: {
                     display: false
