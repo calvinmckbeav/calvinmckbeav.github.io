@@ -5,9 +5,9 @@ window.onload = function() {
     fetchJOLTSData("Hourly Earnings");
 };
 
-const API_KEY = '312e520ae86546fb86b64e51a4e7e7c8'; 
+// const API_KEY = '312e520ae86546fb86b64e51a4e7e7c8'; 
 // const API_KEY = '22d13e6633eb41729d1621c4b2453a77';
-// const API_KEY = 'f43e483f132f4bcda8c91946e7cc2fee';
+const API_KEY = 'f43e483f132f4bcda8c91946e7cc2fee';
 // const API_KEY = 'b5743abeddb54ab58c45608fff0bb69e';
 
 const month_dictionary = {
