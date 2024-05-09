@@ -70,6 +70,3 @@ function createEChart(labels, values, month) {
       }
     });
 }
-      }
-    });
-}
