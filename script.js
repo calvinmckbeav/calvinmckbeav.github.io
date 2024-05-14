@@ -5,9 +5,9 @@ window.onload = function() {
     fetchJOLTSData("Hourly Earnings");
 };
 
-// const API_KEY = '312e520ae86546fb86b64e51a4e7e7c8'; 
+ const API_KEY = '312e520ae86546fb86b64e51a4e7e7c8';
 // const API_KEY = '22d13e6633eb41729d1621c4b2453a77';
-const API_KEY = 'f43e483f132f4bcda8c91946e7cc2fee';
+// const API_KEY = 'f43e483f132f4bcda8c91946e7cc2fee';
 // const API_KEY = 'b5743abeddb54ab58c45608fff0bb69e';
 
 const month_dictionary = {
@@ -84,6 +84,7 @@ function fetchJOLTSData(title) {
 
             // Call createChart function with retrieved data
             createQALChart(labels, qvalues, lvalues);
+            writeParagraph(title, month, qvalues, lvalues)
         })
         .catch(error => {
             console.error('Error fetching JOLTS layoffs data:', error);
@@ -162,6 +163,7 @@ function fetchJOLTSData(title) {
 
         console.log(industry_data)
         createEChart(labels, values, month);
+        writeParagraph(title, month, labels, values)
       });
   } else if (title == "Hourly Earnings") {
       // Earnings data pull
@@ -187,6 +189,7 @@ function fetchJOLTSData(title) {
       console.log(earningsValues)
       console.log(yoyChange)
       createHourlyChart(labels, earningsValues, yoyChange);
+      writeParagraph(title, month, earningsValues, yoyChange)
     })
     .catch(error => {
         console.error('Error fetching BLS Data', error);
