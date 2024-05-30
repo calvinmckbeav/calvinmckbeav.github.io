@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Openings</title>
+    <link rel="stylesheet" href="resources/styles.css">
+</head>
+<body>
+    <h1>Bureau of Labor Statistics (BLS) Data</h1>
+    <div class="container">
+        <div class="section-container" id="mjo">
+            <div class="chart-container">
+                 <canvas id="mjoChart"></canvas>
+                 <p class="footer" id="mjoFooter">Source: Bureau of Labor Statistics</p>
+                 <img src="resources/tessell.png" alt="logo" class="logo" id="mjoLogo">
+            </div>
+            <div class="commentary" id="mjoCommentary">
+                <p>blah blah blah</p>
+            </div>
+        </div>
+        <div class="section-container">
+            <div class="commentary">
+                <p id="qalCommentary">blah blah blah</p>
+            </div>
+            <div class="chart-container">
+                <canvas id="qalChart"></canvas>
+                <p class="footer">Source: Bureau of Labor Statistics</p>
+                <img src="resources/tessell.png" alt="logo" class="logo">
+            </div>
+        </div>
+        <div class="section-container">
+            <div class="chart-container">
+                <canvas id="empChart"></canvas>
+                <p class="footer">Source: Bureau of Labor Statistics</p>
+                <img src="resources/tessell.png" alt="logo" class="logo">
+            </div>
+            <div class="commentary">
+                <p id="empCommentary">blah blah blah</p>
+            </div>
+        </div>
+        <div class="section-container">
+            <div class="commentary">
+                <p id="heCommentary">blah blah blah</p>
+            </div>
+            <div class="chart-container">
+                <canvas id="heChart"></canvas>
+                <p class="footer">Source: Bureau of Labor Statistics</p>
+                <img src="resources/tessell.png" alt="logo" class="logo">
+            </div>
+        </div>
+    </div>
+    <div class="end">
+        <h2>Lightcast and JOLTS Time Series</h2>
+        <img src="resources/timeseries.png" alt="timeseries" class="center">
+    </div>
+
+    <!-- Import Chart.js and watermark library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Import main JavaScript file -->
+    <script src="resources/script.js" defer></script>
+    <!-- Import individual JavaScript files for each chart -->
+    <script src="resources/mjoChart.js" defer></script>
+    <script src="resources/qalChart.js" defer></script>
+    <script src="resources/empChart.js" defer></script>
+    <script src="resources/heChart.js" defer></script>
+    <!-- Import commentary function -->
+    <script src="resources/paragraphs.js"></script>
+</body>
+</html>
